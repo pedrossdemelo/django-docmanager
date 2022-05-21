@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from .models import Doc, Company
 from .serializers import DocumentSerializer, CompanySerializer
@@ -11,15 +12,31 @@ class CompanyList(generics.ListCreateAPIView):
 class CompanyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Company.objects.filter()
     serializer_class = CompanySerializer
-    lookup_field = "name"
+    multiple_lookup_fields = ("name", "id")
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        filter = {}
+        for field in self.multiple_lookup_fields:
+            if field in self.kwargs:
+                filter[field] = self.kwargs[field]
+
+        obj = get_object_or_404(queryset, **filter)
+        return obj
 
 
 class CompanyDocumentsList(generics.ListAPIView):
     serializer_class = DocumentSerializer
-    lookup_field = "name"
+    multiple_lookup_fields = ("name", "id")
 
     def get_queryset(self):
-        return Doc.objects.filter(company__name=self.kwargs["name"], deleted=False)
+        filter = {}
+        for field in self.multiple_lookup_fields:
+            if field in self.kwargs:
+                related_field = f"company__{field}"
+                filter[related_field] = self.kwargs[field]
+
+        return Doc.objects.filter(**filter, deleted=False)
 
 
 class DocumentList(generics.ListCreateAPIView):

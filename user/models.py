@@ -9,8 +9,8 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     last_update_at = models.DateTimeField(auto_now=True)
 
-    def __str__(sef):
-        return sef.email
+    def __str__(s):
+        return s.email
 
     class Meta:
         db_table = "user"

@@ -106,12 +106,16 @@ A restful api for managing documents with django rest framework. No auth/permiss
     > GET / POST companies
   - /companies/:name
     > GET / PUT / DELETE a company
-  - /companies/:name/docs [GET]
+  - /companies/:name/docs
     > GET documents from a company
   - /users
     > GET / POST users
   - /users/:email
     > GET / PUT / DELETE a user
+  - /users/id/:id
+    > GET / PUT / DELETE a user
   - /users/:email/docs
+    > GET documents from a user
+  - /users/id/:id/docs
     > GET documents from a user
 

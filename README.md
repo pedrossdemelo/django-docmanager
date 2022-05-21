@@ -82,7 +82,7 @@ A restful api for managing documents with django rest framework. No auth/permiss
   
   Add your secret key
   ```zsh
-  heroku config:set DJANGO_SECRET_KEY=<your secret key>
+  heroku config:set SECRET_KEY=<your secret key>
   ```
   
   Paste the url of your api to ALLOWED_HOSTS

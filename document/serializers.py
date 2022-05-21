@@ -34,7 +34,7 @@ class DocumentSerializer(serializers.ModelSerializer):
 
 class CompanySerializer(serializers.ModelSerializer):
     users = serializers.SlugRelatedField(
-        slug_field="email", many=True, read_only=True, allow_null=False
+        slug_field="email", many=True, allow_null=False, queryset=User.objects.all()
     )
 
     admin = serializers.SlugRelatedField(

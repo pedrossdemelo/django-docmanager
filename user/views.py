@@ -1,0 +1,29 @@
+from django.shortcuts import get_object_or_404
+from rest_framework import generics
+from .models import User
+from .serializers import UserSerializer
+
+
+class UserView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    multiple_lookup_fields = ("email", "id")
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        filter = {}
+        for field in self.multiple_lookup_fields:
+            if field in self.kwargs:
+                print(field)
+                filter[field] = self.kwargs[field]
+
+        obj = get_object_or_404(queryset, **filter)
+        self.check_object_permissions(self.request, obj)
+        return obj
+
+user_list_view = UserView.as_view()
+user_detail_view = UserDetailView.as_view()

@@ -10,6 +10,28 @@
 
 A restful api for managing documents with django rest framework. No auth/permissions are implemented.
 
+## Endpoints
+  - [/docs](https://django-docmanager.herokuapp.com/docs)
+    > GET / POST documents
+  - [/docs/:uuid4](https://django-docmanager.herokuapp.com/docs/bce30b6a-17b5-4803-87e5-2edb53ab5515/)
+    > GET / PUT / DELETE a document
+  - [/companies](https://django-docmanager.herokuapp.com/companies/)
+    > GET / POST companies
+  - [/companies/:name](https://django-docmanager.herokuapp.com/companies/ZapSign/)
+    > GET / PUT / DELETE a company
+  - [/companies/:name/docs](https://django-docmanager.herokuapp.com/companies/ZapSign/docs/)
+    > GET documents from a company
+  - [/users](https://django-docmanager.herokuapp.com/users/)
+    > GET / POST users
+  - [/users/:email](https://django-docmanager.herokuapp.com/users/admin@zapsign.com.br/)
+    > GET / PUT / DELETE a user
+  - [/users/id/:id](https://django-docmanager.herokuapp.com/users/id/1/)
+    > GET / PUT / DELETE a user
+  - [/users/:email/docs](https://django-docmanager.herokuapp.com/users/admin@zapsign.com.br/docs/)
+    > GET documents from a user
+  - [/users/id/:id/docs](https://django-docmanager.herokuapp.com/users/id/1/docs/)
+    > GET documents from a user
+
 ## Setup
 
 1. Clone the repository
@@ -97,27 +119,3 @@ A restful api for managing documents with django rest framework. No auth/permiss
   ```zsh
   git push heroku main && heroku open
   ```
-
-## Endpoints
-
-  - /docs
-    > GET / POST documents
-  - /docs/:uuid4
-    > GET / PUT / DELETE a document
-  - /companies
-    > GET / POST companies
-  - /companies/:name
-    > GET / PUT / DELETE a company
-  - /companies/:name/docs
-    > GET documents from a company
-  - /users
-    > GET / POST users
-  - /users/:email
-    > GET / PUT / DELETE a user
-  - /users/id/:id
-    > GET / PUT / DELETE a user
-  - /users/:email/docs
-    > GET documents from a user
-  - /users/id/:id/docs
-    > GET documents from a user
-

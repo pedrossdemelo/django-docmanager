@@ -1,16 +1,16 @@
-from datetime import datetime
 from django.utils import timezone
 from rest_framework import serializers
 from .models import Doc, Company
+from user.models import User
 
 
 class DocumentSerializer(serializers.ModelSerializer):
     company = serializers.SlugRelatedField(
-        slug_field="name", read_only=True, allow_null=False
+        slug_field="name", allow_null=False, queryset=Company.objects.all()
     )
 
     created_by = serializers.SlugRelatedField(
-        slug_field="email", read_only=True, allow_null=False
+        slug_field="email", allow_null=False, queryset=User.objects.all()
     )
 
     expired = serializers.SerializerMethodField()
@@ -38,7 +38,7 @@ class CompanySerializer(serializers.ModelSerializer):
     )
 
     admin = serializers.SlugRelatedField(
-        slug_field="email", read_only=True, allow_null=False
+        slug_field="email", allow_null=False, queryset=User.objects.all()
     )
 
     class Meta:

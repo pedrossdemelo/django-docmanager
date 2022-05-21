@@ -3,6 +3,7 @@ from datetime import datetime
 from django.db import models
 from user.models import User
 from .countries import COUNTRIES
+from .timezones import TIMEZONES
 
 
 class Company(models.Model):
@@ -10,7 +11,7 @@ class Company(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     last_update_at = models.DateTimeField(auto_now=True)
     locale = models.CharField(max_length=2, choices=COUNTRIES, default="BR")
-    timezone = models.CharField(max_length=50, default="(UTC-03:00)")
+    timezone = models.CharField(max_length=11, choices=TIMEZONES, default="(UTC-03:00)")
     lang = models.CharField(
         max_length=2,
         choices=[("en", "English"), ("es", "Español"), ("pt", "Português")],

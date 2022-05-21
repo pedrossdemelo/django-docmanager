@@ -4,6 +4,8 @@
   <p>
     <strong>A django learning exercise</strong>
   </p>
+
+  <a href="https://django-docmanager.herokuapp.com">django-docmanager.herokuapp.com</a>
 </div>
 
 A restful api for managing documents with django rest framework. No auth/permissions are implemented.

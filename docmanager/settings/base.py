@@ -1,5 +1,4 @@
 from pathlib import Path
-import django_heroku
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = "django-insecure-=oz*t%6q1ku-sfy30l_db!bf#pz*h3&2ol=^*gf8ueb%ule%2_"
@@ -9,6 +8,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
+    "corsheaders",
     "document.apps.DocumentConfig",
     "user.apps.UserConfig",
     "rest_framework",
@@ -24,6 +24,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -32,6 +33,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "docmanager.urls"
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
 
 TEMPLATES = [
     {

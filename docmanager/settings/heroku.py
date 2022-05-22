@@ -10,6 +10,9 @@ SECRET_KEY = env("SECRET_KEY")
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
-DATABASES = {
-    "default": env.db()
-}
+CORS_ALLOWED_ORIGINS = [
+    "https://solidjs-docmanager.vercel.app",
+    "http://localhost:3000",
+]
+
+DATABASES = {"default": env.db()}

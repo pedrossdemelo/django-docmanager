@@ -21,6 +21,10 @@ A restful api for managing documents with django rest framework. No auth/permiss
     > GET / PUT / DELETE a company
   - [/companies/:name/docs](https://django-docmanager.herokuapp.com/companies/ZapSign/docs/)
     > GET documents from a company
+  - [/companies/id/:id](https://django-docmanager.herokuapp.com/companies/ZapSign/)
+    > GET / PUT / DELETE a company
+  - [/companies/id/:id/docs](https://django-docmanager.herokuapp.com/companies/ZapSign/docs/)
+    > GET documents from a company
   - [/users](https://django-docmanager.herokuapp.com/users/)
     > GET / POST users
   - [/users/:email](https://django-docmanager.herokuapp.com/users/admin@zapsign.com.br/)

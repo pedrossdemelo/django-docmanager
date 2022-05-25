@@ -289,6 +289,7 @@ type Company = {
 };
 
 type User = {
+  name: string;
   email: string;
   email_verified: boolean;
   created_at: string;

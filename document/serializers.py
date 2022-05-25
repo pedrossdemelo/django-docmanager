@@ -31,6 +31,11 @@ class DocumentSerializer(serializers.ModelSerializer):
     def get_expired(self, obj):
         return obj.date_limit_to_sign < timezone.now()
 
+    # disallow updates to the "signed" field after it has been set to true
+    def update(self, instance, validated_data):
+        if instance.signed:
+            validated_data.pop("signed", None)
+        return super().update(instance, validated_data)
 
 class CompanySerializer(serializers.ModelSerializer):
     users = serializers.SlugRelatedField(
